@@ -20,11 +20,11 @@ RUN chown -R node:node /app
 USER 1000
 
 # 暴露端口
-EXPOSE 7860
+EXPOSE 3000
 
 # 健康检查
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
-    CMD wget --no-verbose --tries=1 --spider http://localhost:7860/health || exit 1
+    CMD wget --no-verbose --tries=1 --spider http://localhost:3000/health || exit 1
 
 # 启动应用
 CMD ["node", "index.js"]
